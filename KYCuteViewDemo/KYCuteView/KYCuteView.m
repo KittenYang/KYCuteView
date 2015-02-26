@@ -164,7 +164,6 @@
     
     if (ges.state == UIGestureRecognizerStateBegan) {
         backView.hidden = NO;
-//        shapeLayer.hidden = NO;
         fillColor = [UIColor redColor];
         
         if (displayLink == nil) {
@@ -177,7 +176,6 @@
         if (r1 <= 0) {
 
             fillColor = [UIColor clearColor];
-//            shapeLayer.hidden = YES;
             [shapeLayer removeFromSuperlayer];
             [displayLink invalidate];
             displayLink = nil;
@@ -198,9 +196,6 @@
             }
             
         }];
-        
-        
-
     
     }
     
