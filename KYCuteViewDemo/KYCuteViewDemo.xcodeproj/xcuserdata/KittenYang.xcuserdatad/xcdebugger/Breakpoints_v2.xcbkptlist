@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KYCuteView/KYCuteView.m"
-            timestampString = "446647159.841045"
+            timestampString = "446650764.498477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
