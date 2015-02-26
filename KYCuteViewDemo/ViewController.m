@@ -151,7 +151,7 @@
     number.textColor = [UIColor whiteColor];
     number.textAlignment = NSTextAlignmentCenter;
     
-    [frontView addSubview:number];
+    [frontView insertSubview:number atIndex:0];
     [self.view addSubview:backView];
     [self.view addSubview:frontView];
     
