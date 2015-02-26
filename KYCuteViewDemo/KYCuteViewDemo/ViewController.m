@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    KYCuteView *kycuteview = [[KYCuteView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    KYCuteView *kycuteview = [[KYCuteView alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
     [self.view addSubview:kycuteview];
 
 }

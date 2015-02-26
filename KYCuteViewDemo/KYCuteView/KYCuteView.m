@@ -10,6 +10,9 @@
 
 
 @implementation KYCuteView{
+    UIDynamicAnimator *animator;
+    UISnapBehavior  *snap;
+    
     CGRect viewFrame;
     UIView *frontView;
     UIView *backView;
@@ -31,12 +34,12 @@
 
 -(void)setUp{
     
-    frontView = [[UIView alloc]initWithFrame:self.bounds];
-    frontView.layer.cornerRadius = viewFrame.size.width / 2;
+    frontView = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    frontView.layer.cornerRadius = 50;
     frontView.backgroundColor = [UIColor redColor];
     
-    backView = [[UIView alloc]initWithFrame:self.bounds];
-    backView.layer.cornerRadius = viewFrame.size.width / 2;
+    backView = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    backView.layer.cornerRadius = 50;
     backView.backgroundColor = [UIColor greenColor];
  
     
@@ -53,9 +56,27 @@
 
 
 -(void)dragMe:(UIPanGestureRecognizer *)ges{
-    CGPoint dragPoint = [ges locationInView:self.superview.superview];
-    if (ges.state == UIGestureRecognizerStateChanged) {
-        frontView.center = dragPoint;
+    CGPoint dragPoint = [ges locationInView:self];
+    switch (ges.state) {
+        case UIGestureRecognizerStateBegan:
+
+            break;
+        case UIGestureRecognizerStateChanged:
+            frontView.center = dragPoint;
+            break;
+        case UIGestureRecognizerStateEnded:
+            animator = [[UIDynamicAnimator alloc]initWithReferenceView:self];
+            snap = [[UISnapBehavior alloc]initWithItem:frontView snapToPoint:backView.center];
+            [animator addBehavior:snap];
+            break;
+            
+        case UIGestureRecognizerStateCancelled:
+            animator = [[UIDynamicAnimator alloc]initWithReferenceView:self];
+            snap = [[UISnapBehavior alloc]initWithItem:frontView snapToPoint:backView.center];
+            [animator addBehavior:snap];
+            break;
+        default:
+            break;
     }
 }
 
