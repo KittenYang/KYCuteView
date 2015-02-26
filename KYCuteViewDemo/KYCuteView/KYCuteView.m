@@ -57,27 +57,20 @@
 
 -(void)dragMe:(UIPanGestureRecognizer *)ges{
     CGPoint dragPoint = [ges locationInView:self];
-    switch (ges.state) {
-        case UIGestureRecognizerStateBegan:
 
-            break;
-        case UIGestureRecognizerStateChanged:
-            frontView.center = dragPoint;
-            break;
-        case UIGestureRecognizerStateEnded:
-            animator = [[UIDynamicAnimator alloc]initWithReferenceView:self];
-            snap = [[UISnapBehavior alloc]initWithItem:frontView snapToPoint:backView.center];
-            [animator addBehavior:snap];
-            break;
-            
-        case UIGestureRecognizerStateCancelled:
-            animator = [[UIDynamicAnimator alloc]initWithReferenceView:self];
-            snap = [[UISnapBehavior alloc]initWithItem:frontView snapToPoint:backView.center];
-            [animator addBehavior:snap];
-            break;
-        default:
-            break;
+    
+    if (ges.state == UIGestureRecognizerStateBegan) {
+        
+    }else if (ges.state == UIGestureRecognizerStateChanged){
+        frontView.center = dragPoint;
+    }else if (ges.state == UIGestureRecognizerStateEnded || ges.state ==UIGestureRecognizerStateCancelled){
+        
+        animator = [[UIDynamicAnimator alloc]initWithReferenceView:self];
+        snap = [[UISnapBehavior alloc]initWithItem:frontView snapToPoint:backView.center];
+        [animator addBehavior:snap];
+
     }
+    
 }
 
 
