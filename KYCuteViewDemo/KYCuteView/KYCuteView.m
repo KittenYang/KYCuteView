@@ -34,11 +34,11 @@
 
 -(void)setUp{
     
-    frontView = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    frontView = [[UIView alloc]initWithFrame:CGRectMake(100,400, 100, 100)];
     frontView.layer.cornerRadius = 50;
     frontView.backgroundColor = [UIColor redColor];
     
-    backView = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
+    backView = [[UIView alloc]initWithFrame:frontView.frame];
     backView.layer.cornerRadius = 50;
     backView.backgroundColor = [UIColor greenColor];
  
