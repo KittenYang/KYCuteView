@@ -7,9 +7,6 @@
 //
 
 
-#define BubbleWidth  35
-#define BubbleColor  [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
-
 #import "KYCuteView.h"
 
 
@@ -53,7 +50,7 @@
 }
 
 -(id)initWithPoint:(CGPoint)point superView:(UIView *)view{
-    self = [super initWithFrame:CGRectMake(point.x, point.y, BubbleWidth, BubbleWidth)];
+    self = [super initWithFrame:CGRectMake(point.x, point.y, self.bubbleWidth, self.bubbleWidth)];
     if(self){
         
         initialPoint = point;
@@ -134,16 +131,16 @@
     shapeLayer = [CAShapeLayer layer];
     
     self.backgroundColor = [UIColor clearColor];
-    frontView = [[UIView alloc]initWithFrame:CGRectMake(initialPoint.x,initialPoint.y, BubbleWidth, BubbleWidth)];
+    frontView = [[UIView alloc]initWithFrame:CGRectMake(initialPoint.x,initialPoint.y, self.bubbleWidth, self.bubbleWidth)];
 
     r2 = frontView.bounds.size.width / 2;
     frontView.layer.cornerRadius = r2;
-    frontView.backgroundColor = BubbleColor;
+    frontView.backgroundColor = self.bubbleColor;
     
     backView = [[UIView alloc]initWithFrame:frontView.frame];
     r1 = backView.bounds.size.width / 2;
     backView.layer.cornerRadius = r1;
-    backView.backgroundColor = BubbleColor;
+    backView.backgroundColor = self.bubbleColor;
     
     if(self.bubbleText > 0){
         number = [[UILabel alloc]init];
@@ -192,7 +189,7 @@
 
     if (ges.state == UIGestureRecognizerStateBegan) {
         backView.hidden = NO;
-        fillColorForCute = BubbleColor;
+        fillColorForCute = self.bubbleColor;
         [self RemoveAniamtionLikeGameCenterBubble];
         if (displayLink == nil) {
             displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkAction:)];

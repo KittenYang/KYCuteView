@@ -15,7 +15,9 @@
 
 @property (nonatomic,weak)UIView *containerView;
 @property (nonatomic,strong)NSString *bubbleText;
+@property (nonatomic,assign)CGFloat bubbleWidth;
 @property (nonatomic,assign)CGFloat viscosity;
+@property (nonatomic,assign)UIColor *bubbleColor;
 
 -(id)initWithPoint:(CGPoint)point superView:(UIView *)view;
 -(void)setUp;
