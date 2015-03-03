@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F8DB5751AA57B5400727719 /* KYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DB5741AA57B5400727719 /* KYCuteView.m */; };
 		5FDF30AC1A9EEB04007E6ECA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30AB1A9EEB04007E6ECA /* main.m */; };
 		5FDF30AF1A9EEB04007E6ECA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30AE1A9EEB04007E6ECA /* AppDelegate.m */; };
 		5FDF30B21A9EEB04007E6ECA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30B11A9EEB04007E6ECA /* ViewController.m */; };
@@ -14,7 +15,6 @@
 		5FDF30B71A9EEB04007E6ECA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF30B61A9EEB04007E6ECA /* Images.xcassets */; };
 		5FDF30BA1A9EEB04007E6ECA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF30B81A9EEB04007E6ECA /* LaunchScreen.xib */; };
 		5FDF30C61A9EEB04007E6ECA /* KYCuteViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30C51A9EEB04007E6ECA /* KYCuteViewDemoTests.m */; };
-		5FDF30D11A9EEE78007E6ECA /* KYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30D01A9EEE78007E6ECA /* KYCuteView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F8DB5731AA57B5400727719 /* KYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCuteView.h; sourceTree = "<group>"; };
+		5F8DB5741AA57B5400727719 /* KYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCuteView.m; sourceTree = "<group>"; };
 		5FDF30A61A9EEB04007E6ECA /* KYCuteViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYCuteViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDF30AA1A9EEB04007E6ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FDF30AB1A9EEB04007E6ECA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,8 +43,6 @@
 		5FDF30BF1A9EEB04007E6ECA /* KYCuteViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KYCuteViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDF30C41A9EEB04007E6ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FDF30C51A9EEB04007E6ECA /* KYCuteViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYCuteViewDemoTests.m; sourceTree = "<group>"; };
-		5FDF30CF1A9EEE78007E6ECA /* KYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KYCuteView.h; path = KYCuteView/KYCuteView.h; sourceTree = SOURCE_ROOT; };
-		5FDF30D01A9EEE78007E6ECA /* KYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KYCuteView.m; path = KYCuteView/KYCuteView.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +126,8 @@
 		5FDF30D21A9EEE84007E6ECA /* KYCuteView */ = {
 			isa = PBXGroup;
 			children = (
-				5FDF30CF1A9EEE78007E6ECA /* KYCuteView.h */,
-				5FDF30D01A9EEE78007E6ECA /* KYCuteView.m */,
+				5F8DB5731AA57B5400727719 /* KYCuteView.h */,
+				5F8DB5741AA57B5400727719 /* KYCuteView.m */,
 			);
 			name = KYCuteView;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 				5FDF30B21A9EEB04007E6ECA /* ViewController.m in Sources */,
 				5FDF30AF1A9EEB04007E6ECA /* AppDelegate.m in Sources */,
 				5FDF30AC1A9EEB04007E6ECA /* main.m in Sources */,
-				5FDF30D11A9EEE78007E6ECA /* KYCuteView.m in Sources */,
+				5F8DB5751AA57B5400727719 /* KYCuteView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +429,7 @@
 				5FDF30CB1A9EEB04007E6ECA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FDF30CC1A9EEB04007E6ECA /* Build configuration list for PBXNativeTarget "KYCuteViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +438,7 @@
 				5FDF30CE1A9EEB04007E6ECA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
