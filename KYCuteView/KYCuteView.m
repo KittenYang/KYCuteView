@@ -145,18 +145,19 @@
     backView.layer.cornerRadius = r1;
     backView.backgroundColor = BubbleColor;
     
-    number = [[UILabel alloc]init];
-    number.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
-    number.text = self.bubbleText;
-    number.textColor = [UIColor whiteColor];
-    number.textAlignment = NSTextAlignmentCenter;
-    
-    [frontView insertSubview:number atIndex:0];
-    
+    if(self.bubbleText > 0){
+        number = [[UILabel alloc]init];
+        number.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
+        number.text = self.bubbleText;
+        number.textColor = [UIColor whiteColor];
+        number.textAlignment = NSTextAlignmentCenter;
+        
+        [frontView insertSubview:number atIndex:0];
+    }
     
     [self.containerView addSubview:backView];
     [self.containerView addSubview:frontView];
-
+    
     
     x1 = backView.center.x;
     y1 = backView.center.y;
