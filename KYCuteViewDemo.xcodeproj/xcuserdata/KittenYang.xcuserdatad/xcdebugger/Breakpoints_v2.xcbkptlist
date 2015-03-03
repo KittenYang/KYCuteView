@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KYCuteView/KYCuteView.m"
-            timestampString = "446650764.498477"
+            timestampString = "447047947.977015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-drawRect:"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-addGesture"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KYCuteView/KYCuteView.m"
+            timestampString = "447047947.977015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-dragMe:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

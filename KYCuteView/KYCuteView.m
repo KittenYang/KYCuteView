@@ -7,7 +7,8 @@
 //
 
 
-#define BubbleWidth  80
+#define BubbleWidth  35
+#define BubbleColor  [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
 
 #import "KYCuteView.h"
 
@@ -24,6 +25,7 @@
     
     CADisplayLink *displayLink;
     
+    UILabel *number;//更新数字
     UIView *frontView;
     UIView *backView;
     CGFloat r1; // backView
@@ -44,10 +46,24 @@
     CGPoint pointP; //P
     
     CGRect oldBackViewFrame;
+    CGPoint initialPoint;
     CGPoint oldBackViewCenter;
     CAShapeLayer *shapeLayer;
     
 }
+
+-(id)initWithPoint:(CGPoint)point superView:(UIView *)view{
+    self = [super initWithFrame:CGRectMake(point.x, point.y, BubbleWidth, BubbleWidth)];
+    if(self){
+        
+        initialPoint = point;
+        self.containerView = view;
+                
+        [self.containerView addSubview:self];
+    }
+    return self;
+}
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -76,8 +92,8 @@
         cosDigree = (y2-y1)/centerDistance;
         sinDigree = (x2-x1)/centerDistance;
     }
-    NSLog(@"%f", acosf(cosDigree));
-    r1 = oldBackViewFrame.size.width / 2 - centerDistance/5;
+//    NSLog(@"%f", acosf(cosDigree));
+    r1 = oldBackViewFrame.size.width / 2 - centerDistance/self.viscosity;
     
     pointA = CGPointMake(x1-r1*cosDigree, y1+r1*sinDigree);  // A
     pointB = CGPointMake(x1+r1*cosDigree, y1-r1*sinDigree); // B
@@ -92,8 +108,10 @@
 -(void)drawRect:(CGRect)rect{
     
     
-    backView.frame = CGRectMake(oldBackViewFrame.origin.x, oldBackViewFrame.origin.y, r1*2, r1*2);
+    backView.center = oldBackViewCenter;
+    backView.bounds = CGRectMake(0, 0, r1*2, r1*2);
     backView.layer.cornerRadius = r1;
+
     
     cutePath = [UIBezierPath bezierPath];
     [cutePath moveToPoint:pointA];
@@ -106,7 +124,7 @@
     if (backView.hidden == NO) {
         shapeLayer.path = [cutePath CGPath];
         shapeLayer.fillColor = [fillColorForCute CGColor];
-        [self.layer addSublayer:shapeLayer];
+        [self.containerView.layer addSublayer:shapeLayer];
     }
     
 }
@@ -116,19 +134,28 @@
     shapeLayer = [CAShapeLayer layer];
     
     self.backgroundColor = [UIColor clearColor];
-    frontView = [[UIView alloc]initWithFrame:CGRectMake(100,400, BubbleWidth, BubbleWidth)];
+    frontView = [[UIView alloc]initWithFrame:CGRectMake(initialPoint.x,initialPoint.y, BubbleWidth, BubbleWidth)];
 
     r2 = frontView.bounds.size.width / 2;
     frontView.layer.cornerRadius = r2;
-    frontView.backgroundColor = [UIColor redColor];
+    frontView.backgroundColor = BubbleColor;
     
     backView = [[UIView alloc]initWithFrame:frontView.frame];
     r1 = backView.bounds.size.width / 2;
     backView.layer.cornerRadius = r1;
-    backView.backgroundColor = [UIColor redColor];
+    backView.backgroundColor = BubbleColor;
     
-    [self addSubview:backView];
-    [self addSubview:frontView];
+    number = [[UILabel alloc]init];
+    number.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
+    number.text = self.bubbleText;
+    number.textColor = [UIColor whiteColor];
+    number.textAlignment = NSTextAlignmentCenter;
+    
+    [frontView insertSubview:number atIndex:0];
+    
+    
+    [self.containerView addSubview:backView];
+    [self.containerView addSubview:frontView];
 
     
     x1 = backView.center.x;
@@ -141,8 +168,8 @@
     pointB = CGPointMake(x1+r1, y1);  // B
     pointD = CGPointMake(x2-r2, y2);  // D
     pointC = CGPointMake(x2+r2, y2);  // C
-    pointO = CGPointMake(x1-r1,y1);
-    pointP = CGPointMake(x2+r2, y2);
+    pointO = CGPointMake(x1-r1,y1);   // O
+    pointP = CGPointMake(x2+r2, y2);  // P
     
     oldBackViewFrame = backView.frame;
     oldBackViewCenter = backView.center;
@@ -160,11 +187,11 @@
 
 
 -(void)dragMe:(UIPanGestureRecognizer *)ges{
-    CGPoint dragPoint = [ges locationInView:self];
+    CGPoint dragPoint = [ges locationInView:self.containerView];
 
     if (ges.state == UIGestureRecognizerStateBegan) {
         backView.hidden = NO;
-        fillColorForCute = [UIColor redColor];
+        fillColorForCute = BubbleColor;
         [self RemoveAniamtionLikeGameCenterBubble];
         if (displayLink == nil) {
             displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkAction:)];
