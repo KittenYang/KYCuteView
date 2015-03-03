@@ -121,7 +121,7 @@
     if (backView.hidden == NO) {
         shapeLayer.path = [cutePath CGPath];
         shapeLayer.fillColor = [fillColorForCute CGColor];
-        [self.containerView.layer addSublayer:shapeLayer];
+        [self.containerView.layer insertSublayer:shapeLayer below:self.frontView.layer];
     }
     
 }
