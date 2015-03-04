@@ -6,7 +6,7 @@
 ![](demo.gif)
 
 
-![demo.png]
+![](demo.png)
 
 ###How to use
 E!A!S!Y!
