@@ -25,7 +25,7 @@
 ###How to use
 E!A!S!Y!
 
-```
+```objective-c
     KYCuteView *cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake(25, 505) superView:self.view];
     cuteView.viscosity  = 20;
     cuteView.bubbleWidth = 35;
@@ -40,7 +40,8 @@ E!A!S!Y!
 
 
 ###HERE IS THE PROPERTY
-```
+
+```objective-c
 //父视图
 //set the view which you wanna add the 'cuteBubble'
 @property (nonatomic,weak)UIView *containerView;
