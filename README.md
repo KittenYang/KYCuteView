@@ -1,5 +1,12 @@
-# KYCuteView
-弹弹弹，就是这么Q弹带劲！
+<p align="left" >
+  <img src="logo.png" alt="KYParallaxView" title="KYParallaxView">
+</p>
+
+
+![CocoaPods Version](https://img.shields.io/badge/pod-v1.3.0-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-iOS-red.svg)
+
 
 实现类似QQ消息拖拽消失的交互+GameCenter的浮动小球效果
 
@@ -7,6 +14,13 @@
 
 
 ![](demo.png)
+
+
+
+##Installation
+
+`pod 'KYCuteView', '~> 1.3.0'`
+
 
 ###How to use
 E!A!S!Y!
