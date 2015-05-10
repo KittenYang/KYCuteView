@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "KYCuteView"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "实现类似QQ消息拖拽消失的交互+GameCenter的浮动小球效果"
 
   s.description  = <<-DESC
