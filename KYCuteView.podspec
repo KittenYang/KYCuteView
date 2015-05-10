@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "KYCuteView"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "实现类似QQ消息拖拽消失的交互+GameCenter的浮动小球效果"
 
   s.description  = <<-DESC
@@ -123,7 +123,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  s.requires_arc = true
+  # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"

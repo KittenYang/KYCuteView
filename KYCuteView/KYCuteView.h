@@ -14,7 +14,7 @@
 
 //父视图
 //set the view which you wanna add the 'cuteBubble'
-@property (nonatomic,weak)UIView *containerView;
+@property (nonatomic,strong)UIView *containerView;
 
 //气泡上显示数字的label
 //the label on the bubble
