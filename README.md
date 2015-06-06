@@ -70,3 +70,6 @@ E!A!S!Y!
 
 Intro: [http://kittenyang.com/drawablebubble/](http://kittenyang.com/drawablebubble/)
 
+
+##License
+This project is under MIT License. See LICENSE file for more information.
