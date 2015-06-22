@@ -22,8 +22,7 @@
 `pod 'KYCuteView', '~> 1.3.0'`
 
 
-###How to use
-E!A!S!Y!
+##How to use
 
 ```objective-c
   KYCuteView *cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake(25, 505) superView:self.view];
@@ -39,7 +38,7 @@ E!A!S!Y!
 ```
 
 
-###HERE IS THE PROPERTY
+##PROPERTIES
 
 ```objective-c
 //父视图
@@ -67,8 +66,15 @@ E!A!S!Y!
 @property (nonatomic,strong)UIView *frontView;
 
 ```
+##Intro:
 
-Intro: [http://kittenyang.com/drawablebubble/](http://kittenyang.com/drawablebubble/)
+  Blog: [http://kittenyang.com/drawablebubble/](http://kittenyang.com/drawablebubble/)
+
+##Update
+
+###v1.3.0
+
+  弃用CADisplayLink,解决了屏幕刷新频率和手指滑动速率不一致的问题。
 
 
 ##License
