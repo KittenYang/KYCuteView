@@ -39,7 +39,6 @@
 
 -(id)initWithPoint:(CGPoint)point superView:(UIView *)view;
 -(void)setUp;
--(void)addGesture;
 
 
 @end

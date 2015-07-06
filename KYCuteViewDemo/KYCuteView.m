@@ -67,7 +67,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setUp];
-        [self addGesture];
     }
     return self;
 }
@@ -173,14 +172,12 @@
 
     backView.hidden = YES;//为了看到frontView的气泡晃动效果，需要展示隐藏backView
     [self AddAniamtionLikeGameCenterBubble];
-}
-
-
--(void)addGesture{
+    
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragMe:)];
     [self.frontView addGestureRecognizer:pan];
-
 }
+
+
 
 
 -(void)dragMe:(UIPanGestureRecognizer *)ges{
