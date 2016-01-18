@@ -16,12 +16,10 @@
 
 @implementation ViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    KYCuteView *cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake(25, 505) superView:self.view];
+    KYCuteView *cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake(25, [UIScreen mainScreen].bounds.size.height - 65) superView:self.view];
     cuteView.viscosity  = 20;
     cuteView.bubbleWidth = 35;
     cuteView.bubbleColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];

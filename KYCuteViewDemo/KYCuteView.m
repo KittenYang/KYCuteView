@@ -14,7 +14,7 @@
     UIColor *fillColorForCute;
     UIDynamicAnimator *animator;
     UISnapBehavior  *snap;
-    
+
     UIView *backView;
     CGFloat r1;
     CGFloat r2;
@@ -161,7 +161,7 @@
         backView.hidden = NO;
         fillColorForCute = self.bubbleColor;
         [self RemoveAniamtionLikeGameCenterBubble];
-    } else if (ges.state == UIGestureRecognizerStateChanged){
+    }else if (ges.state == UIGestureRecognizerStateChanged){
         self.frontView.center = dragPoint;
         if (r1 <= 6) {
             fillColorForCute = [UIColor clearColor];
@@ -181,9 +181,8 @@
                 [self AddAniamtionLikeGameCenterBubble];
             }
         }];
-    
     }
-    
+  
 }
 
 
