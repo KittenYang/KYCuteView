@@ -87,7 +87,6 @@
 }
 
 -(void)drawRect{
-    
     backView.center = oldBackViewCenter;
     backView.bounds = CGRectMake(0, 0, r1*2, r1*2);
     backView.layer.cornerRadius = r1;
