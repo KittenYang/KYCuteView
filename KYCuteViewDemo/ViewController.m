@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Kitten Yang. All rights reserved.
 //
 
-
 #import "ViewController.h"
 #import "KYCuteView.h"
 

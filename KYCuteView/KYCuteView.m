@@ -6,12 +6,7 @@
 //  Copyright (c) 2015 Kitten Yang. All rights reserved.
 //
 
-
 #import "KYCuteView.h"
-
-
-
-
 
 @implementation KYCuteView{
     
@@ -19,14 +14,10 @@
     UIColor *fillColorForCute;
     UIDynamicAnimator *animator;
     UISnapBehavior  *snap;
-    
-//    CADisplayLink *displayLink;
-    
 
-//    UIView *frontView;
     UIView *backView;
-    CGFloat r1; // backView
-    CGFloat r2; // frontView
+    CGFloat r1;
+    CGFloat r2;
     CGFloat x1;
     CGFloat y1;
     CGFloat x2;
@@ -52,30 +43,23 @@
 -(id)initWithPoint:(CGPoint)point superView:(UIView *)view{
     self = [super initWithFrame:CGRectMake(point.x, point.y, self.bubbleWidth, self.bubbleWidth)];
     if(self){
-        
         initialPoint = point;
         self.containerView = view;
-                
         [self.containerView addSubview:self];
     }
     return self;
 }
 
-
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         [self setUp];
-        [self addGesture];
     }
     return self;
 }
 
 
-//每隔一帧刷新屏幕的定时器
--(void)displayLinkAction:(CADisplayLink *)dis{
-
+-(void)drawRect{
     x1 = backView.center.x;
     y1 = backView.center.y;
     x2 = self.frontView.center.x;
@@ -89,7 +73,7 @@
         cosDigree = (y2-y1)/centerDistance;
         sinDigree = (x2-x1)/centerDistance;
     }
-//    NSLog(@"%f", acosf(cosDigree));
+    
     r1 = oldBackViewFrame.size.width / 2 - centerDistance/self.viscosity;
     
     pointA = CGPointMake(x1-r1*cosDigree, y1+r1*sinDigree);  // A
@@ -99,16 +83,9 @@
     pointO = CGPointMake(pointA.x + (centerDistance / 2)*sinDigree, pointA.y + (centerDistance / 2)*cosDigree);
     pointP = CGPointMake(pointB.x + (centerDistance / 2)*sinDigree, pointB.y + (centerDistance / 2)*cosDigree);
     
-    [self drawRect];
-}
-
--(void)drawRect{
-    
-    
     backView.center = oldBackViewCenter;
     backView.bounds = CGRectMake(0, 0, r1*2, r1*2);
     backView.layer.cornerRadius = r1;
-
     
     cutePath = [UIBezierPath bezierPath];
     [cutePath moveToPoint:pointA];
@@ -117,19 +94,16 @@
     [cutePath addQuadCurveToPoint:pointB controlPoint:pointP];
     [cutePath moveToPoint:pointA];
     
-    
     if (backView.hidden == NO) {
         shapeLayer.path = [cutePath CGPath];
         shapeLayer.fillColor = [fillColorForCute CGColor];
         [self.containerView.layer insertSublayer:shapeLayer below:self.frontView.layer];
     }
-    
-}
 
+}
 
 -(void)setUp{
     shapeLayer = [CAShapeLayer layer];
-    
     self.backgroundColor = [UIColor clearColor];
     self.frontView = [[UIView alloc]initWithFrame:CGRectMake(initialPoint.x,initialPoint.y, self.bubbleWidth, self.bubbleWidth)];
 
@@ -149,17 +123,13 @@
     
     [self.frontView insertSubview:self.bubbleLabel atIndex:0];
 
-
-    
     [self.containerView addSubview:backView];
     [self.containerView addSubview:self.frontView];
-    
     
     x1 = backView.center.x;
     y1 = backView.center.y;
     x2 = self.frontView.center.x;
     y2 = self.frontView.center.y;
-    
     
     pointA = CGPointMake(x1-r1,y1);   // A
     pointB = CGPointMake(x1+r1, y1);  // B
@@ -171,68 +141,49 @@
     oldBackViewFrame = backView.frame;
     oldBackViewCenter = backView.center;
 
-    backView.hidden = YES;//为了看到frontView的气泡晃动效果，需要展示隐藏backView
-    [self AddAniamtionLikeGameCenterBubble];
-}
-
-
--(void)addGesture{
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragMe:)];
+    backView.hidden = YES;//为了看到 frontView 的气泡晃动效果，需要暂时隐藏 backView
+    [self addAniamtionLikeGameCenterBubble];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handleDragGesture:)];
     [self.frontView addGestureRecognizer:pan];
-
 }
 
 
--(void)dragMe:(UIPanGestureRecognizer *)ges{
+-(void)handleDragGesture:(UIPanGestureRecognizer *)ges{
     CGPoint dragPoint = [ges locationInView:self.containerView];
 
     if (ges.state == UIGestureRecognizerStateBegan) {
         backView.hidden = NO;
         fillColorForCute = self.bubbleColor;
         [self RemoveAniamtionLikeGameCenterBubble];
-//        if (displayLink == nil) {
-//            displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkAction:)];
-//            [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-//        }
-
     }else if (ges.state == UIGestureRecognizerStateChanged){
         self.frontView.center = dragPoint;
         if (r1 <= 6) {
-
             fillColorForCute = [UIColor clearColor];
             backView.hidden = YES;
             [shapeLayer removeFromSuperlayer];
-//            [displayLink invalidate];
-//            displayLink = nil;
         }
+        [self drawRect];
+    } else if (ges.state == UIGestureRecognizerStateEnded || ges.state ==UIGestureRecognizerStateCancelled || ges.state == UIGestureRecognizerStateFailed){
 
-    }else if (ges.state == UIGestureRecognizerStateEnded || ges.state ==UIGestureRecognizerStateCancelled || ges.state == UIGestureRecognizerStateFailed){
-        
         backView.hidden = YES;
         fillColorForCute = [UIColor clearColor];
         [shapeLayer removeFromSuperlayer];
         [UIView animateWithDuration:0.5 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.frontView.center = oldBackViewCenter;
         } completion:^(BOOL finished) {
-            
             if (finished) {
-                [self AddAniamtionLikeGameCenterBubble];
-//                [displayLink invalidate];
-//                displayLink = nil;
+                [self addAniamtionLikeGameCenterBubble];
             }
-            
         }];
-    
     }
-    
-    //bb-coder:after delete displaylink , we should add this method
-    [self displayLinkAction:nil];
-    
+  
 }
 
 
-//----类似GameCenter的气泡晃动动画------
--(void)AddAniamtionLikeGameCenterBubble{
+//---- 类似GameCenter的气泡晃动动画 ------
+
+-(void)addAniamtionLikeGameCenterBubble {
 
     CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     pathAnimation.calculationMode = kCAAnimationPaced;
@@ -241,7 +192,6 @@
     pathAnimation.repeatCount = INFINITY;
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     pathAnimation.duration = 5.0;
-    
     
     CGMutablePathRef curvedPath = CGPathCreateMutable();
     CGRect circleContainer = CGRectInset(self.frontView.frame, self.frontView.bounds.size.width / 2 - 3, self.frontView.bounds.size.width / 2 - 3);
@@ -269,11 +219,11 @@
     scaleY.keyTimes = @[@0.0, @0.5, @1.0];
     scaleY.repeatCount = INFINITY;
     scaleY.autoreverses = YES;
-    scaleX.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    scaleY.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [self.frontView.layer addAnimation:scaleY forKey:@"scaleYAnimation"];
 }
 
--(void)RemoveAniamtionLikeGameCenterBubble{
+-(void)RemoveAniamtionLikeGameCenterBubble {
     [self.frontView.layer removeAllAnimations];
 }
 
