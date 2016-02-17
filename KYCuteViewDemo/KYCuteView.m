@@ -7,6 +7,7 @@
 //
 
 #import "KYCuteView.h"
+#import "KYCuteViewDemo-swift.h"
 
 @implementation KYCuteView{
     
@@ -170,16 +171,39 @@
         [self displayLinkAction];
     } else if (ges.state == UIGestureRecognizerStateEnded || ges.state ==UIGestureRecognizerStateCancelled || ges.state == UIGestureRecognizerStateFailed){
 
-        backView.hidden = YES;
-        fillColorForCute = [UIColor clearColor];
-        [shapeLayer removeFromSuperlayer];
-        [UIView animateWithDuration:0.5 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.frontView.center = oldBackViewCenter;
-        } completion:^(BOOL finished) {
-            if (finished) {
-                [self AddAniamtionLikeGameCenterBubble];
-            }
-        }];
+        if (r1 <= 6) {
+            [self.frontView boom];
+            
+            [UIView animateWithDuration:3.0f animations:^{
+                if (self.backgroundColor == [UIColor whiteColor]) {
+                    self.backgroundColor = [UIColor blackColor];
+                }else {
+                    self.backgroundColor = [UIColor whiteColor];
+                }
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    [self.frontView reset];
+                    
+                    backView.hidden = YES;
+                    fillColorForCute = [UIColor clearColor];
+                    [shapeLayer removeFromSuperlayer];
+                    
+                    self.frontView.center = oldBackViewCenter;
+                    [self AddAniamtionLikeGameCenterBubble];
+                }
+            }];
+        }else {
+            backView.hidden = YES;
+            fillColorForCute = [UIColor clearColor];
+            [shapeLayer removeFromSuperlayer];
+            [UIView animateWithDuration:0.5 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.frontView.center = oldBackViewCenter;
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    [self AddAniamtionLikeGameCenterBubble];
+                }
+            }];
+        }
     }
   
 }

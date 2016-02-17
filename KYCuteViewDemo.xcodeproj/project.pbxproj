@@ -15,6 +15,7 @@
 		5FDF30B71A9EEB04007E6ECA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF30B61A9EEB04007E6ECA /* Images.xcassets */; };
 		5FDF30BA1A9EEB04007E6ECA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF30B81A9EEB04007E6ECA /* LaunchScreen.xib */; };
 		5FDF30C61A9EEB04007E6ECA /* KYCuteViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30C51A9EEB04007E6ECA /* KYCuteViewDemoTests.m */; };
+		FEF450DB1C7419A000ECBAB4 /* UIViewWSBoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF450DA1C7419A000ECBAB4 /* UIViewWSBoom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		5FDF30BF1A9EEB04007E6ECA /* KYCuteViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KYCuteViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDF30C41A9EEB04007E6ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FDF30C51A9EEB04007E6ECA /* KYCuteViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYCuteViewDemoTests.m; sourceTree = "<group>"; };
+		FEF450D91C74199E00ECBAB4 /* KYCuteViewDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KYCuteViewDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		FEF450DA1C7419A000ECBAB4 /* UIViewWSBoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewWSBoom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 			children = (
 				5F8DB5731AA57B5400727719 /* KYCuteView.h */,
 				5F8DB5741AA57B5400727719 /* KYCuteView.m */,
+				FEF450DA1C7419A000ECBAB4 /* UIViewWSBoom.swift */,
+				FEF450D91C74199E00ECBAB4 /* KYCuteViewDemo-Bridging-Header.h */,
 			);
 			name = KYCuteView;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 		5FDF309E1A9EEB04007E6ECA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Kitten Yang";
 				TargetAttributes = {
@@ -233,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FDF30B21A9EEB04007E6ECA /* ViewController.m in Sources */,
+				FEF450DB1C7419A000ECBAB4 /* UIViewWSBoom.swift in Sources */,
 				5FDF30AF1A9EEB04007E6ECA /* AppDelegate.m in Sources */,
 				5FDF30AC1A9EEB04007E6ECA /* main.m in Sources */,
 				5F8DB5751AA57B5400727719 /* KYCuteView.m in Sources */,
@@ -357,11 +364,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = KYCuteViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KYCuteViewDemo/KYCuteViewDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -369,12 +380,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = KYCuteViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KYCuteViewDemo/KYCuteViewDemo-Bridging-Header.h";
 			};
 			name = Release;
 		};
